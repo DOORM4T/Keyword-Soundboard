@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Keyword Soundboard</title>
+  </head>
+
+  <body>
+    <h1>Audio on Demand -- Web Speech Recognition API</h1>
+    <p>Press [`] key to toggle microphone</p>
+    <p>Speak the trigger words aloud!</p>
+    <br />
+    <br />
+    <p>Available Sound Data</p>
+    { name: 'explosion.wav', triggers: ['FIREBALL', 'KABOOM', 'BOOM',
+    'EXPLOSION'] }, { name: 'fart.mp3', triggers: ['FART', 'FLATULENCE'] }, {
+    name: 'shriek.mp3', triggers: ['SHRIEK', 'SCREAM'] }
+    <br />
+    <br />
+    <p>Modifiers</p>
+    <p>Say in the same sentence as the trigger word.</p>
+    LOUD, QUICK, SOFT, SLOW
+
+    <script src="./node_modules/howler/dist/howler.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
