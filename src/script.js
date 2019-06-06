@@ -50,7 +50,7 @@ recognition.onresult = event => {
     });
   });
 
-  let sourceNames = filteredSourceObjects.map(obj => `sounds/${obj.name}`);
+  let sourceNames = filteredSourceObjects.map(obj => `src/sounds/${obj.name}`);
 
   // List of sounds to play
   let playList = sourceNames.map(source => new Howl({ src: [source] }));
