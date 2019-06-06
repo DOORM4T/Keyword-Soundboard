@@ -1,0 +1,27 @@
+{
+  "name": "recog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DOORM4T/Keyword-Soundboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DOORM4T/Keyword-Soundboard/issues"
+  },
+  "homepage": "https://github.com/DOORM4T/Keyword-Soundboard#readme"
+}
