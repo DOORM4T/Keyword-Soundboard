@@ -1,9 +1,9 @@
 const sounds = [
   {
-    name: 'explosion.wav',
+    name: 'explosion.mp3',
     triggers: ['FIREBALL', 'KABOOM', 'BOOM', 'EXPLOSION']
   },
-  { name: 'fart.mp3', triggers: ['FART', 'FLATULENCE'] },
+  { name: 'fart.mp3', triggers: ['FART', 'FLATULENCE', 'WUMBO'] },
   { name: 'shriek.mp3', triggers: ['SHRIEK', 'SCREAM'] }
 ];
 
@@ -28,9 +28,13 @@ document.body.addEventListener('keyup', e => {
 });
 
 recognition.onresult = event => {
-  console.log(Array.from(event.results)[0][0].transcript);
-  let result = Array.from(event.results)[0][0].transcript.toUpperCase();
-  let wordArray = result.split(' ');
+  let result = Array.from(event.results)[0][0];
+  let transcript = result.transcript.toUpperCase();
+  console.table([
+    `Transcript: ${transcript}`,
+    `Confidence: ${result.confidence}`
+  ]);
+  let wordArray = transcript.split(' ');
 
   // Filtered source objects. Sorted based on which sequence keywords are stated.
   let filteredSourceObjects = [];
@@ -46,28 +50,27 @@ recognition.onresult = event => {
     });
   });
 
-  console.log(filteredSourceObjects);
-
   let sourceNames = filteredSourceObjects.map(obj => `sounds/${obj.name}`);
 
-  let sound = new Howl({
-    src: sourceNames
+  // List of sounds to play
+  let playList = sourceNames.map(source => new Howl({ src: [source] }));
+
+  // Play the playlist
+  playList.forEach((sound, index) => {
+    if (transcript.includes('QUICK')) {
+      sound.rate(4.0);
+    } else if (transcript.includes('SLOW')) {
+      sound.rate(0.5);
+    } else sound.rate(1);
+
+    if (transcript.includes('LOUD')) {
+      sound.volume(1);
+    } else if (transcript.includes('SOFT')) {
+      sound.volume(0.1);
+    } else sound.volume(0.5);
+    console.log(`Playing Sound #${index}`);
+    sound.play();
   });
-
-  console.log(sound);
-  if (result.includes('QUICK')) {
-    sound.rate(4.0);
-  } else if (result.includes('SLOW')) {
-    sound.rate(0.5);
-  } else sound.rate(1);
-
-  if (result.includes('LOUD')) {
-    sound.volume(1.0);
-  } else if (result.includes('SOFT')) {
-    sound.volume(0.1);
-  } else sound.volume(0.5);
-
-  sound.play();
 };
 
 recognition.onend = function() {
