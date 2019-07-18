@@ -1,7 +1,7 @@
 const sounds = [
   {
     name: 'explosion.mp3',
-    triggers: ['FIREBALL', 'KABOOM', 'BOOM', 'EXPLOSION']
+    triggers: ['FIREBALL', 'KABOOM', 'BOOM', 'EXPLOSION', 'DRACARYS']
   },
   { name: 'fart.mp3', triggers: ['FART', 'FLATULENCE', 'WUMBO'] },
   { name: 'shriek.mp3', triggers: ['SHRIEK', 'SCREAM'] }
